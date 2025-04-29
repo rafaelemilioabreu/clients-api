@@ -18,7 +18,6 @@ Este proyecto es una API REST desarrollada con Java, Jersey y PostgreSQL que per
 2. Crea una nueva base de datos llamada `orion_client`
 3. Ejecuta el siguiente script SQL para crear las tablas necesarias.
 
-
 ### 2. Importar el proyecto en Eclipse
 
 1. Abre Eclipse IDE
@@ -59,32 +58,33 @@ La API estará disponible en la URL base: `http://localhost:8080/clients-api/api
 
 ### Endpoints de Clientes
 
-| Método | URL | Descripción |
-|--------|-----|-------------|
-| GET    | `/customers` | Obtener todos los clientes |
-| GET    | `/customers/{id}` | Obtener un cliente por ID |
-| POST   | `/customers` | Crear un nuevo cliente |
-| PUT    | `/customers/{id}` | Actualizar un cliente existente |
-| DELETE | `/customers/{id}` | Eliminar un cliente |
+| Método | URL             | Descripción                     |
+| ------ | --------------- | ------------------------------- |
+| GET    | `/clients`      | Obtener todos los clientes      |
+| GET    | `/clients/{id}` | Obtener un cliente por ID       |
+| POST   | `/clients`      | Crear un nuevo cliente          |
+| PUT    | `/clients/{id}` | Actualizar un cliente existente |
+| DELETE | `/clients/{id}` | Eliminar un cliente             |
 
 ### Endpoints de Direcciones
 
-| Método | URL | Descripción |
-|--------|-----|-------------|
-| GET    | `/addresses` | Obtener todas las direcciones |
-| GET    | `/addresses/{id}` | Obtener una dirección por ID |
-| GET    | `/addresses/customer/{customerId}` | Obtener direcciones por ID de cliente |
-| POST   | `/addresses` | Crear una nueva dirección |
-| PUT    | `/addresses/{id}` | Actualizar una dirección existente |
-| DELETE | `/addresses/{id}` | Eliminar una dirección |
+| Método | URL                            | Descripción                           |
+| ------ | ------------------------------ | ------------------------------------- |
+| GET    | `/addresses`                   | Obtener todas las direcciones         |
+| GET    | `/addresses/{id}`              | Obtener una dirección por ID          |
+| GET    | `/addresses/client/{clientId}` | Obtener direcciones por ID de cliente |
+| POST   | `/addresses`                   | Crear una nueva dirección             |
+| PUT    | `/addresses/{id}`              | Actualizar una dirección existente    |
+| DELETE | `/addresses/{id}`              | Eliminar una dirección                |
 
 ## Ejemplos de uso
 
 ### Crear un cliente nuevo (con dirección)
 
 **Método**: POST  
-**URL**: `http://localhost:8080/clients-api/api/customers`  
+**URL**: `http://localhost:8080/clients-api/api/clients`  
 **Cuerpo** (JSON):
+
 ```json
 {
   "firstName": "Pedro",
@@ -104,9 +104,10 @@ La API estará disponible en la URL base: `http://localhost:8080/clients-api/api
 **Método**: POST  
 **URL**: `http://localhost:8080/clients-api/api/addresses`  
 **Cuerpo** (JSON):
+
 ```json
 {
-  "customerId": 1,
+  "clientId": 1,
   "address": "Avenida Independencia #789, Santo Domingo"
 }
 ```
@@ -114,10 +115,9 @@ La API estará disponible en la URL base: `http://localhost:8080/clients-api/api
 ### Obtener todos los clientes con sus direcciones
 
 **Método**: GET  
-**URL**: `http://localhost:8080/clients-api/api/customers`
+**URL**: `http://localhost:8080/clients-api/api/clients`
 
 ### Obtener todas las direcciones de un cliente específico
 
 **Método**: GET  
-**URL**: `http://localhost:8080/clients-api/api/addresses/customer/1`
-
+**URL**: `http://localhost:8080/clients-api/api/addresses/client/1`

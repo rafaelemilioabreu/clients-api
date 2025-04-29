@@ -46,10 +46,10 @@ public class AddressResource {
     }
     
     @GET
-    @Path("/customer/{customerId}")
-    public Response getAddressesByCustomerId(@PathParam("customerId") int customerId) {
+    @Path("/client/{clientId}")
+    public Response getAddressesByClientId(@PathParam("clientId") int clientId) {
         try {
-            List<Address> addresses = addressDAO.getAddressesByCustomerId(customerId);
+            List<Address> addresses = addressDAO.getAddressesByClientId(clientId);
             return Response.ok(addresses).build();
         } catch (SQLException e) {
             e.printStackTrace();

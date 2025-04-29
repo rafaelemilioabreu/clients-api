@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.oriontek</groupId>
-    <artifactId>clients-api</artifactId>
+    <artifactId>client-api</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
-    <name>API REST de Clientes y Direcciones</name>
+    <name>Client Address REST API</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,7 +43,7 @@
     </dependencies>
 
     <build>
-        <finalName>clients-api</finalName>
+        <finalName>client-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

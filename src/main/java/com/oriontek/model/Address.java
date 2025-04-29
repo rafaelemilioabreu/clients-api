@@ -2,19 +2,18 @@ package com.oriontek.model;
 
 public class Address {
     private int addressId;
-    private int customerId;
+    private int clientId;
     private String address;
 
     public Address() {
     }
 
-    public Address(int addressId, int customerId, String address) {
+    public Address(int addressId, int clientId, String address) {
         this.addressId = addressId;
-        this.customerId = customerId;
+        this.clientId = clientId;
         this.address = address;
     }
 
-    // Getters and Setters
     public int getAddressId() {
         return addressId;
     }
@@ -23,12 +22,12 @@ public class Address {
         this.addressId = addressId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public String getAddress() {

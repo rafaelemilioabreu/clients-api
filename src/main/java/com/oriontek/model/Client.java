@@ -2,20 +2,20 @@ package com.oriontek.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer {
-    private int customerId;
+public class Client {
+    private int clientId;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
     private List<Address> addresses;
 
-    public Customer() {
+    public Client() {
         this.addresses = new ArrayList<>();
     }
 
-    public Customer(int customerId, String firstName, String lastName, String email, String phone) {
-        this.customerId = customerId;
+    public Client(int clientId, String firstName, String lastName, String email, String phone) {
+        this.clientId = clientId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -23,13 +23,12 @@ public class Customer {
         this.addresses = new ArrayList<>();
     }
 
-    // Getters and Setters
-    public int getCustomerId() {
-        return customerId;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public String getFirstName() {

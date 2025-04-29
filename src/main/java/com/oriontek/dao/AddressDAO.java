@@ -24,7 +24,7 @@ public class AddressDAO {
             while (rs.next()) {
                 addresses.add(new Address(
                     rs.getInt("address_id"),
-                    rs.getInt("customer_id"),
+                    rs.getInt("client_id"),
                     rs.getString("address")
                 ));
             }
@@ -32,20 +32,20 @@ public class AddressDAO {
         return addresses;
     }
     
-    public List<Address> getAddressesByCustomerId(int customerId) throws SQLException {
+    public List<Address> getAddressesByClientId(int clientId) throws SQLException {
         List<Address> addresses = new ArrayList<>();
-        String sql = "SELECT * FROM addresses WHERE customer_id = ?";
+        String sql = "SELECT * FROM addresses WHERE client_id = ?";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
-            pstmt.setInt(1, customerId);
+            pstmt.setInt(1, clientId);
             
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     addresses.add(new Address(
                         rs.getInt("address_id"),
-                        rs.getInt("customer_id"),
+                        rs.getInt("client_id"),
                         rs.getString("address")
                     ));
                 }
@@ -66,7 +66,7 @@ public class AddressDAO {
                 if (rs.next()) {
                     return new Address(
                         rs.getInt("address_id"),
-                        rs.getInt("customer_id"),
+                        rs.getInt("client_id"),
                         rs.getString("address")
                     );
                 }
@@ -76,12 +76,12 @@ public class AddressDAO {
     }
     
     public Address createAddress(Address address) throws SQLException {
-        String sql = "INSERT INTO addresses (customer_id, address) VALUES (?, ?) RETURNING address_id";
+        String sql = "INSERT INTO addresses (client_id, address) VALUES (?, ?) RETURNING address_id";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
-            pstmt.setInt(1, address.getCustomerId());
+            pstmt.setInt(1, address.getClientId());
             pstmt.setString(2, address.getAddress());
             
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -96,12 +96,12 @@ public class AddressDAO {
     }
     
     public boolean updateAddress(Address address) throws SQLException {
-        String sql = "UPDATE addresses SET customer_id = ?, address = ? WHERE address_id = ?";
+        String sql = "UPDATE addresses SET client_id = ?, address = ? WHERE address_id = ?";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
-            pstmt.setInt(1, address.getCustomerId());
+            pstmt.setInt(1, address.getClientId());
             pstmt.setString(2, address.getAddress());
             pstmt.setInt(3, address.getAddressId());
             
@@ -123,13 +123,13 @@ public class AddressDAO {
         }
     }
     
-    public boolean deleteAddressesByCustomerId(int customerId) throws SQLException {
-        String sql = "DELETE FROM addresses WHERE customer_id = ?";
+    public boolean deleteAddressesByClientId(int clientId) throws SQLException {
+        String sql = "DELETE FROM addresses WHERE client_id = ?";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
-            pstmt.setInt(1, customerId);
+            pstmt.setInt(1, clientId);
             
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
